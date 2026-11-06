@@ -1,0 +1,33 @@
+' =====================================================================
+' PDE4431 CW1 Part 2, EPSON VT6 pick and place (3 cycle loop version)
+' =====================================================================
+Function main
+    Integer i                  ' loop counter for ball and pallet index
+    Print "Program started"
+    Motor On
+    Power High
+    Tool 1                     ' TCP defined in the Tools table (Z = 130 mm)
+    Go Home_position CP
+ 
+    i = 0
+    Do
+ 	i = i + 1
+ 	Print "Cycle ", i, " of 3, picking ball ", i
+ 	Call Pick
+ 
+	Print "Cycle ", i, " of 3, placing at Drop Point ", i
+	Select i
+ 	    Case 1
+ 		Call Drop1
+ 	    Case 2
+ 		Call Drop2
+ 	    Case 3
+ 		Call Drop3
+ 	Send
+    Loop Until i = 3            ' ends after exactly 3 iterations
+    Print "Loop finished, 3 of 3 parts placed"
+    Print "Returning Home"
+    Go Home_position
+    Print "Turning motors off"
+    Motor Off
+Fend

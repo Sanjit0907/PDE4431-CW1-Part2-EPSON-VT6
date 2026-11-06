@@ -1,0 +1,112 @@
+Function main
+    Print "Program started"
+    Motor On
+    Power High
+    Go Home_position CP
+
+    Print "Starting: Picking Ball 1"
+    Call Pick
+    Print "Placing part 1 at Drop Point 1"
+    Call Drop1
+
+    Print "Starting: Picking Ball 2"
+    Call Pick
+    Print "Placing part 2 at Drop Point 2"
+    Call Drop2
+
+    Print "Starting: Picking Ball 3"
+    Call Pick
+    Print "Placing part 3 at Drop Point 3"
+    Call Drop3
+    Go Home_position
+
+
+    Print "All 3 parts placed successfully"
+	Print "Returning Home"
+    Print "Turning motors off"
+    Motor Off
+Fend
+
+
+Function Pick
+    Print "Pick: Moving to home position"
+    Go Home_position CP
+
+    Print "Pick: Opening gripper"
+    Off 11
+    Wait 3
+
+    Print "Pick: Moving to pickup approach position"
+    Move Pick_Point +Z(100) CP
+
+    Print "Pick: Moving down to pickup point"
+    Move Pick_Point CP
+
+    Wait 1
+    Print "Pick: Closing gripper"
+    On 11
+    Wait 2
+
+    Print "Pick: Retracting from pickup point"
+    Move Pick_Point +Z(100) CP
+
+    Print "Pick operation completed"
+Fend
+
+
+Function Drop1
+    Print "Drop 1: Moving to approach position"
+    Go Drop_point1 +Z(100) CP
+
+    Print "Drop 1: Moving down to drop point"
+    Move Drop_point1 +Z(10) CP
+
+    Wait 1
+    Print "Drop 1: Opening gripper"
+    Off 11
+    Wait 2
+
+    Print "Drop 1: Retracting"
+    Move Drop_point1 +Z(100) CP
+
+    Print "Drop 1 completed"
+Fend
+
+
+Function Drop2
+    Print "Drop 2: Moving to approach position"
+    Go Drop_point2 +Z(100) CP
+
+    Print "Drop 2: Moving down to drop point"
+    Move Drop_point2 +Z(10) CP
+
+    Wait 1
+    Print "Drop 2: Opening gripper"
+    Off 11
+    Wait 2
+
+    Print "Drop 2: Retracting"
+    Move Drop_point2 +Z(100) CP
+
+    Print "Drop 2 completed"
+Fend
+
+
+Function Drop3
+    Print "Drop 3: Moving to approach position"
+    Go Drop_point3 +Z(100) CP
+
+    Print "Drop 3: Moving down to drop point"
+    Move Drop_point3 +Z(10) CP
+
+    Wait 1
+    Print "Drop 3: Opening gripper"
+    Off 11
+    Wait 2
+
+    Print "Drop 3: Retracting"
+    Move Drop_point3 +Z(100) CP
+
+    Print "Drop 3 completed"
+Fend
+
